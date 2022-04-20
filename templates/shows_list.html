@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>TV-show</title>
+    </head>
+    <body>
+        <div>
+            <ul>
+                {% for show in shows %}
+                <li>
+                    <h2><a href="{{ show.id }}/">{{ show.title }}</a></h2>
+                    <img src="{{ show.image.url }}" alt="">
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </body>
+</html>

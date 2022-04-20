@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from . import models
 
 def hello_world(request):
-    return HttpResponse("<p>Hello World by TELIDAS<p>")
+    return HttpResponse("<p>Hello World<p>")
 
 
 def post_all(request):
