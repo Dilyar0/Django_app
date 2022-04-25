@@ -1,19 +1,28 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
     <head>
         <meta charset="UTF-8">
         <title>TV-show</title>
+        <link rel="stylesheet" type="text/css" href="{% static "css/bootstrap.css" %}">
+        <link rel="stylesheet" type="text/css" href="{% static "main.css" %}">
     </head>
     <body>
-        <div>
-            <ul>
+        <div class="container shows__container">
+            <div class="row gy-5">
                 {% for show in shows %}
-                <li>
-                    <h2><a href="{{ show.id }}/">{{ show.title }}</a></h2>
-                    <img src="{{ show.image.url }}" alt="">
-                </li>
+               <div class="col-3">
+                   <div class="card">
+                      <img src="{{ show.image.url }}" class="card-img-top shows__img" alt="">
+                      <div class="card-body shows__cardbody">
+                        <h5 class="card-title">{{ show.title }}</h5>
+                        <p class="card-text">{{ show.genre }}</p>
+                        <a href="{{ show.id }}/" class="btn btn-primary">Go detail</a>
+                      </div>
+                    </div>
+               </div>
                 {% endfor %}
-            </ul>
+            </div>
         </div>
     </body>
 </html>
