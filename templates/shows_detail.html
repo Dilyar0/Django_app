@@ -13,6 +13,9 @@
             <p>quantity: {{ show.quantity }}</p>
             <p>create date: {{ show.created_date }}</p>
             <p>update date: {{ show.updated_date }}</p>
+            <a href="/add-show/">Add new show</a>
+            <a href="/shows/{{ show.id }}/update/">Change {{ show.title }}</a>
+            <a href="/shows/{{ show.id }}/delete/">Delete {{ show.title }}</a>
         </div>
         <div>
             <h3>Comments:</h3>

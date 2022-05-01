@@ -9,6 +9,16 @@
     </head>
     <body>
         <div class="container shows__container">
+            <div>
+                <button type="button" class="btn btn-secondary shows__button"><a href="/shows/">All shows</a></button>
+                <button type="button" class="btn btn-secondary shows__button"><a href="/shows/latest">Latest</a></button>
+                <button type="button" class="btn btn-secondary shows__button"><a href="/shows/year">Year</a></button>
+                <button type="button" class="btn btn-secondary shows__button"><a href="/shows/anime">Anime</a></button>
+                <button type="button" class="btn btn-secondary shows__button"><a href="/shows/action">Action</a></button>
+                <button type="button" class="btn btn-secondary shows__button"><a href="/shows/romantic">Romantic</a></button>
+                <button type="button" class="btn btn-secondary shows__button"><a href="/shows/horror">Horror</a></button>
+                <button type="button" class="btn btn-secondary shows__button"><a href="/shows/fantastic">Fantastic</a></button>
+            </div>
             <div class="row gy-5">
                 {% for show in shows %}
                <div class="col-3">
