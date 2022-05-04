@@ -1,19 +1,70 @@
 from django.urls import path
-from . import views
+from . import views, models
+from datetime import datetime, timedelta
 
-app_name = 'shows'
+start_date = datetime.today() - timedelta(days=1)
+one_year_date = datetime.today() - timedelta(days=365)
+
+app_name = "shows"
 urlpatterns = [
-    path('shows/', views.shows_all, name="shows_all"),
-    path('shows/latest', views.shows_latest, name="shows_latest"),
-    path('shows/year', views.shows_in_one_year, name="shows_year"),
-    path('shows/anime', views.shows_genre_anime, name="shows_anime"),
-    path('shows/action', views.shows_genre_action, name="shows_action"),
-    path('shows/romantic', views.shows_genre_romantic, name="shows_romantic"),
-    path('shows/horror/', views.shows_genre_horror, name="shows_horror"),
-    path('shows/fantastic/', views.shows_genre_fantastic, name="shows_fantastic"),
-
-    path('shows/<int:id>/', views.shows_detail, name="shows_detail"),
-    path('shows/<int:id>/update/', views.put_update_shows, name="shows_update"),
-    path('shows/<int:id>/delete/', views.shows_delete, name="shows_delete"),
-    path('add-show/', views.add_show, name="add_show")
+    path("shows/", views.ShowsListView.as_view(), name="shows_all"),
+    path(
+        "shows/latest",
+        views.ShowsListView.as_view(
+            queryset=models.TVShow.objects.filter(created_date__gt=start_date).order_by(
+                "-id"
+            )
+        ),
+        name="shows_latest",
+    ),
+    path(
+        "shows/year",
+        views.ShowsListView.as_view(
+            queryset=models.TVShow.objects.filter(created_date__gt=one_year_date)
+        ),
+        name="shows_year",
+    ),
+    path(
+        "shows/anime",
+        views.ShowsListView.as_view(
+            queryset=models.TVShow.objects.filter(genre="Anime")
+        ),
+        name="shows_anime",
+    ),
+    path(
+        "shows/action",
+        views.ShowsListView.as_view(
+            queryset=models.TVShow.objects.filter(genre="Action")
+        ),
+        name="shows_action",
+    ),
+    path(
+        "shows/romantic",
+        views.ShowsListView.as_view(
+            queryset=models.TVShow.objects.filter(genre="Romantic")
+        ),
+        name="shows_romantic",
+    ),
+    path(
+        "shows/horror/",
+        views.ShowsListView.as_view(
+            queryset=models.TVShow.objects.filter(genre="Horror")
+        ),
+        name="shows_horror",
+    ),
+    path(
+        "shows/fantastic/",
+        views.ShowsListView.as_view(
+            queryset=models.TVShow.objects.filter(genre="Romantic")
+        ),
+        name="shows_fantastic",
+    ),
+    path("shows/<int:id>/", views.ShowsDetailView.as_view(), name="shows_detail"),
+    path(
+        "shows/<int:id>/update/", views.ShowsUpdateView.as_view(), name="shows_update"
+    ),
+    path(
+        "shows/<int:id>/delete/", views.ShowsDeleteView.as_view(), name="shows_delete"
+    ),
+    path("add-show/", views.ShowsCreateView.as_view(), name="add_show"),
 ]

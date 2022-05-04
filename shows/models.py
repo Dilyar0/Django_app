@@ -27,9 +27,9 @@ class ShowComment(models.Model):
     text = models.TextField()
     created_date = models.DateField(auto_now_add=True)
     updated_date = models.DateField(auto_now=True)
-    shows = models.ForeignKey(TVShow,
-                              on_delete=models.CASCADE,
-                              related_name="shows_comment")
+    shows = models.ForeignKey(
+        TVShow, on_delete=models.CASCADE, related_name="shows_comment"
+    )
 
     def __str__(self):
         return self.shows.title

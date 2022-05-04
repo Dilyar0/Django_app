@@ -1,31 +1,37 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Shows detail</title>
-    </head>
-    <body>
-        <div>
-            <h2>{{ show.title }}</h2>
-            <img src="{{ show.image.url }}" alt="">
-            <p>{{ show.description }}</p>
-            <p>Genre: {{ show.genre }}</p>
-            <p>quantity: {{ show.quantity }}</p>
-            <p>create date: {{ show.created_date }}</p>
-            <p>update date: {{ show.updated_date }}</p>
+<head>
+    <meta charset="UTF-8">
+    <title>Shows detail</title>
+    <link rel="stylesheet" type="text/css" href="{% static "css/bootstrap.css" %}">
+</head>
+<body>
+    <div class="container">
+        <img src="{{ object.image.url }}" alt="">
+        <div class="card">
+            <div class="card-body card__detail">
+            <h2 class="card-title">{{ object.title }}</h2>
+            <p class="card-text">{{ object.description }}</p>
+            <p class="card-text" >Genre: {{ object.genre }}</p>
+            <p class="card-text" >quantity: {{ object.quantity }}</p>
+            <p class="card-text" >create date: {{ object.created_date }}</p>
+            <p class="card-text" >update date: {{ object.updated_date }}</p>
             <a href="/add-show/">Add new show</a>
-            <a href="/shows/{{ show.id }}/update/">Change {{ show.title }}</a>
-            <a href="/shows/{{ show.id }}/delete/">Delete {{ show.title }}</a>
+            <a href="/shows/{{ object.id }}/update/">Change {{ object.title }}</a>
+            <a href="/shows/{{ object.id }}/delete/">Delete {{ object.title }}</a>
+        </div>
         </div>
         <div>
             <h3>Comments:</h3>
             <ul>
-                {% for i in show.shows_comment.all %}
-                <li>
-                    <p>{{ i.text }}</p>
-                </li>
+                {% for i in object.shows_comment.all %}
+                    <li>
+                        <p>{{ i.text }}</p>
+                    </li>
                 {% endfor %}
             </ul>
         </div>
-    </body>
+    </div>
+</body>
 </html>

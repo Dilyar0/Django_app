@@ -7,21 +7,41 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='TVshow',
+            name="TVshow",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=80)),
-                ('description', models.TextField()),
-                ('image', models.ImageField(upload_to='')),
-                ('quantity', models.PositiveIntegerField()),
-                ('created_date', models.DateField(auto_now_add=True)),
-                ('updated_date', models.DateField(auto_now=True)),
-                ('genre', models.CharField(choices=[('Comedy', 'COMEDY'), ('Action', 'ACTION'), ('Romantic', 'ROMANTIC'), ('Horror', 'HORROR'), ('Anime', 'ANIME'), ('Fantastic', 'FANTASTIC')], max_length=100)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=80)),
+                ("description", models.TextField()),
+                ("image", models.ImageField(upload_to="")),
+                ("quantity", models.PositiveIntegerField()),
+                ("created_date", models.DateField(auto_now_add=True)),
+                ("updated_date", models.DateField(auto_now=True)),
+                (
+                    "genre",
+                    models.CharField(
+                        choices=[
+                            ("Comedy", "COMEDY"),
+                            ("Action", "ACTION"),
+                            ("Romantic", "ROMANTIC"),
+                            ("Horror", "HORROR"),
+                            ("Anime", "ANIME"),
+                            ("Fantastic", "FANTASTIC"),
+                        ],
+                        max_length=100,
+                    ),
+                ),
             ],
         ),
     ]

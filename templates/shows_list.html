@@ -20,7 +20,7 @@
                 <button type="button" class="btn btn-secondary shows__button"><a href="/shows/fantastic">Fantastic</a></button>
             </div>
             <div class="row gy-5">
-                {% for show in shows %}
+                {% for show in object_list %}
                <div class="col-3">
                    <div class="card">
                       <img src="{{ show.image.url }}" class="card-img-top shows__img" alt="">
