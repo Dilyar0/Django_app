@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Plants List</title>
+</head>
+<body>
+<div>
+    <ul>
+        {% for plant in object_list %}
+        <li>
+            <h2>{{ plant.title }}</h2>
+            <a href="{{ plant.image }}">image link</a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+</body>
+</html>
